@@ -1,5 +1,23 @@
 import threading
 import time
+import selectors
+import optparse
+# import pymysql
+
+
+
+
+
+import pyexpat
+
+
+#
+#
+# import socket
+#
+# socket.gethostbyname()
+# ss = selectors.EpollSelector
+
 """该线程会一直打印I am working,不会打印fineshed"""
 
 def worker():
