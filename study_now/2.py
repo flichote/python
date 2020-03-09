@@ -14,6 +14,6 @@ class Solution(object):
         else:
             print("false")
 
-astr = 'aasdf'
+astr = 'asdf'
 s = Solution()
 s.isUnique(astr)
