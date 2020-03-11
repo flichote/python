@@ -13,7 +13,7 @@ class String(object):
 
 s = String()
 
-s1 = 'adsdf'
+s1 = 'advsdf'
 s2 = 'saddf'
 
 s.theSome(s1,s2)
