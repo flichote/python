@@ -1,6 +1,10 @@
-list = [1,2,4]
-counter = 0
-for i in list:
-    counter+=1
 
-print(counter)
+a = 4
+b = 5
+
+
+c = (a if a<b else b)
+print(c)
+
+
+
