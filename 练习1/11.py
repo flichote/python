@@ -1,26 +1,65 @@
-l1=[1,2,3,5]
-l2=[5,6,4]
+# def gen_next(s2):
+#     k = -1
+#     n = len(s2)
+#     j = 0
+#     next_list = [0 for i in range(n)]
+#     next_list[0] = -1                           #next数组初始值为-1
+#     while j < n-1:
+#         if k == -1 or s2[k] == s2[j]:
+#             k += 1
+#             j += 1
+#             next_list[j] = k                    #如果相等 则next[j+1] = k
+#         else:
+#             k = next_list[k]                    #如果不等，则将next[k]的值给k
+#     return next_list
+#
+#
+# def match(s1, s2, next_list):
+#     ans = -1
+#     i = 0
+#     j = 0
+#     while i < len(s1):
+#         if s1[i] == s2[j] or j == -1:
+#             i += 1
+#             j += 1
+#         else:
+#             j = next_list[j]
+#         if j == len(s2):
+#             ans = i - len(s2)
+#             break
+#     return ans
+#
+#
+# if __name__ == '__main__':
+#     s1 = 'ababaabbababababc'
+#     s2 = 'ababc'
+#     next_list = gen_next(s2)
+#     print(next_list)
+#     print(match(s1, s2, next_list))
 
-list3=[]
+class KMP:
+    def __init__(self,T:str):
+        self.T ,self.n = T,len(T)
+        self.next = [0] * (self.n+1)
+        self.next[0],j = -1,-1
 
-number1 = 0
-number2 = 0
-number3 = 0
-length1 = len(l1)
-length2 = len(l2)
-for i in range(length1):
-        number1 += l1[i]*10**(length1-i-1)
-print(number1)
+        for i in range(self.n):
+            while j >=0 and T[i] != T[j]: j = self.next[j]
+            j+=1
+            self.next[i+1] = j
 
-for j in range(length2):
-    number2 += l2[j]*10**(length2-j-1)
-print(number2)
-number3 = number2 + number1
+    def match(self,S:str):
+        m,j,res = len(S),0,[]
 
-a=str(number3)
-for i in a:
-    list3.append(i)
+        for i in range(m):
+            while j > 0 and S[i] != self.T[i]: j = self.next[j]
+            if S[i] == self.T[j]: j+=1
+            if j == self.n:
+                res.append(i-self.n +1)
+                j = self.next[j]
+        return res
 
-print('number1',number1,'number2',number2)
-print(list3)
+kmp = KMP('asd')
+kmp.match('assddssasd')
+
 
