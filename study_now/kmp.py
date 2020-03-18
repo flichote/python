@@ -19,7 +19,7 @@ def gen_next(s2):
 
 
 def match(s1, s2, next_list):
-    ans = -1
+    ans = -1    #如果返回是-1则说明没有匹配上
     i = 0
     j = 0
     while i < len(s1):
